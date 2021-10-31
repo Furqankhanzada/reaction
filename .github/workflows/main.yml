@@ -39,10 +39,10 @@ jobs:
         
                 
       - name: Deploy Production 1
-        run: scp -r / bitnami@3.125.29.149:/opt/bitnami
+        run: scp -r /home/runner/work/reaction/reaction bitnami@3.125.29.149:/opt/bitnami
         
       - name: Deploy Production
-        run: rsync ./ bitnami@3.125.29.149:/opt/bitnami
+        run: rsync /home/runner/work/reaction/reaction bitnami@3.125.29.149:/opt/bitnami
       
 
       # Runs a set of commands using the runners shell
