@@ -31,16 +31,18 @@ jobs:
           key: ${{ secrets.KEY }}
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
        
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: ls
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          cd /
+          ls
         
                 
       - name: Deploy Production 1
-        run: scp bitnami@3.125.29.149:~/apis/. ./
+        run: scp -r / bitnami@3.125.29.149:/opt/bitnami
         
       - name: Deploy Production
-        run: rsync ./ bitnami@3.125.29.149:~/apis
+        run: rsync ./ bitnami@3.125.29.149:/opt/bitnami
       
 
       # Runs a set of commands using the runners shell
