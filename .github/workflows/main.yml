@@ -41,8 +41,20 @@ jobs:
         run: scp -r /home/runner/work/reaction/reaction/* bitnami@3.125.29.149:~/apis
       
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - name: Build and Run Production
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.KEY }}
+          script: |
+            cd ~/apis
+            export NODE_ENV=production
+            export PORT=3000
+            export MONGO_URL=${{ secrets.MONGO_URL }}
+            export ROOT_URL=${{ secrets.ROOT_URL }}
+            export STRIPE_API_KEY=${{ secrets.STRIPE_API_KEY }}
+            export MAIL_URL=${{ secrets.MAIL_URL }}
+            npm install --only=prod
+            pm2 delete "apis"
+            pm2 start --experimental-modules --experimental-json-modules ./src/index.js --name "apis"
