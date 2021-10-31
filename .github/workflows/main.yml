@@ -35,6 +35,10 @@ jobs:
       - name: Run a one-line script
         run: ls
         
+                
+      - name: Deploy Production 1
+        run: scp ./ bitnami@3.125.29.149:~/apis
+        
       - name: Deploy Production
         run: rsync ./ bitnami@3.125.29.149:~/apis
       
