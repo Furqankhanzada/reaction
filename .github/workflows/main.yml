@@ -56,5 +56,7 @@ jobs:
             export STRIPE_API_KEY=${{ secrets.STRIPE_API_KEY }}
             export MAIL_URL=${{ secrets.MAIL_URL }}
             npm install --only=prod --ignore-scripts
+            node -v
+            nvm list
             pm2 delete "apis"
             pm2 start --experimental-modules --experimental-json-modules ./src/index.js --name "apis"
