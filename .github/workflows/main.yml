@@ -61,4 +61,4 @@ jobs:
             node -v
             nvm list
             pm2 delete "apis"
-            pm2 start --experimental-modules --experimental-json-modules ./src/index.js --name "apis"
+            pm2 start ./src/index.js --name "apis"
