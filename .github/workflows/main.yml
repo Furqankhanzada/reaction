@@ -50,6 +50,7 @@ jobs:
           script: |
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+            nvm use 14.11.0
             cd ~/apis
             export NODE_ENV=production
             export PORT=3000
