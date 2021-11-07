@@ -58,6 +58,9 @@ jobs:
             export ROOT_URL=${{ secrets.ROOT_URL }}
             export STRIPE_API_KEY=${{ secrets.STRIPE_API_KEY }}
             export MAIL_URL=${{ secrets.MAIL_URL }}
+            export REACTION_ADMIN_PUBLIC_ACCOUNT_REGISTRATION_URL=${{ secrets.REACTION_ADMIN_PUBLIC_ACCOUNT_REGISTRATION_URL }}
+            export REACTION_IDENTITY_PUBLIC_PASSWORD_RESET_URL=${{ secrets.REACTION_IDENTITY_PUBLIC_PASSWORD_RESET_URL }}
+            export REACTION_IDENTITY_PUBLIC_VERIFY_EMAIL_URL=${{ secrets.REACTION_IDENTITY_PUBLIC_VERIFY_EMAIL_URL }}
             npm install --only=prod --ignore-scripts
             node -v
             nvm list
