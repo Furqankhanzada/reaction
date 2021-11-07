@@ -60,6 +60,9 @@ jobs:
             export MAIL_URL=${{ secrets.MAIL_URL }}
             npm install --only=prod --ignore-scripts
             node -v
+            echo $MONGO_URL
+            echo $ROOT_URL
+            echo $MAIL_URL
             nvm list
             pm2 delete "apis"
             pm2 start --name "apis" npm -- start
