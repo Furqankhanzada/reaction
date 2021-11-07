@@ -34,8 +34,8 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          pwd
-          ls
+          git branch --show-current
+          git checkout trunk
                 
       - name: Deploy Production
         run: scp -r /home/runner/work/reaction/reaction/* bitnami@3.125.29.149:~/apis
@@ -60,9 +60,6 @@ jobs:
             export MAIL_URL=${{ secrets.MAIL_URL }}
             npm install --only=prod --ignore-scripts
             node -v
-            echo $MONGO_URL
-            echo $ROOT_URL
-            echo $MAIL_URL
             nvm list
             pm2 delete "apis"
             pm2 start --name "apis" npm -- start
